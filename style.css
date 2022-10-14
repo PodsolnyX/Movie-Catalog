@@ -1,4 +1,7 @@
+body {
+    background-color:rgb(245, 244, 244);
+}
 .film-poster {
-    height: 150px;
+    height: 100px;
     width: auto;
 };

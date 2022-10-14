@@ -9,6 +9,28 @@
         <title>Document</title>
     </head>
     <body>
+
+        <div class="card d-none" id="sample-card">
+            <div class="card-body row">
+                <div class="col-xl-1 col-lg-2 col-md-2 col-sm-3  d-flex justify-content-center">
+                    <img src="" class="img-fluid film-poster" alt=""/>
+                </div>
+                <div class="col-xl-9 col-lg-8 col-md-8 col-sm-9 col-12 d-flex flex-column justify-content-between">
+                    <div class="d-flex flex-column">
+                        <div class="film-name fs-4"></div>
+                        <div class="film-year"></div>
+                    </div>
+                    <div class="d-flex mb-1">
+                        <div class="film-country"></div>
+                        <div class="film-genre"></div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm d-flex align-items-center">
+                    <div class="film-rating badge bg-primary text-wrap"></div>
+                </div>
+            </div>
+        </div>
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Movies Catalog</a>
@@ -36,30 +58,10 @@
             </div>
         </nav>
 
-        <main class="container pt-4">
-            <div class="card">
-                <div class="card-body row">
-                    <div class="col-lg-2 col-md-3 col-sm-4  d-flex justify-content-center">
-                        <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/2e19bab7-5044-4f9b-87cb-2c47b963ef23/orig" class="img-fluid film-poster" alt=""/>
-                    </div>
-                    <div class="col-lg-8 col-md-6 col-sm-4 col-12 d-flex flex-column justify-content-between">
-                        <div class="d-flex flex-column">
-                            <div class="film-title fs-3">Побег из Шоушенко</div>
-                            <div class="film-year">1999</div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <div class="film-country">США:</div>
-                            <div class="film-genre">юмор</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-4 d-flex align-items-center">
-                        <div class="film-rating badge bg-primary text-wrap">Средняя оценка - 9.0</div>
-                    </div>
-                </div>
-            </div>
-        </main>
+        <main class="container pt-4 pb-4" id="movies-container"></main>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="scripts.js"></script>
     </body>
 </html>
