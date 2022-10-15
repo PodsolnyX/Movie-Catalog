@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style-sample-film.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Movies Catalog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Фильмы</a>
+                    </li>
+                    <li class="nav-item d-none">
+                        <a class="nav-link" href="#">Избранное</a>
+                    </li>
+                    <li class="nav-item d-none">
+                        <a class="nav-link" href="#">Мой профиль</a>
+                    </li>
+                </ul>
+                <div class="">
+                    <a class="text-decoration-none text-white pe-3" href="#">Вход</a>
+                    <a class="text-decoration-none text-white" href="#">Регистрация</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container pt-4 pb-4" id="movie-container">
+        <div class="card">
+            <div class="card-body">
+                <div class="row pb-3">
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12 d-flex justify-content-center">
+                        <img src="https://kinopoisk-ru.clstorage.net/2s89R4K04/ae7af5CslCkK/rVSfH-4xE1g5HfOmBLXTnYX760KasO5cqWbK3B1pm2sMSA_4-9cDU2J9hILb0A-BVRoJJrv1hbU_mgGRzTDtL-xEuu7KtEMt2JlGg3GApywQG9-WLjWKHXhTH2nvmpnoLt8tmwlVAZV2GaBjrmW65VEvrNKLZBHBGLxltulXGEjeZQyN6LKjW4zc8XW0pBFpNYkpdOlDvJgpZVmeXujK-72Nrhm51yNFF5qQRX7HmmajT54ziwJAkeudULbYRykJ3uRdDiqxUWkt3rKUBATiuic4-Tbr4O6LaRbofZ14aIguX5_oexViJqbqAQfuVmglAs7cIvmCIeKrvXPXWHZq6I6kfAxZ8GF5Ta9SNjXlQ5hGKThGiEOfiRmk6M9uOykYjj7Nurj30UbEeGBl_CeqtgM9DuLrMdPDat0AFGrFSzruxM9c6INBae5_Mva0pZL5BzvahHvDrJiJdkl-DWhqeqw-_Urr9CPnxvtDty20e6bQjF5TWyICgJocwMT7R3rYjObPf5uAwenujHAX9gbCuBU5a1SbUy5pKRVKvJ6oC7t8rHzraVYTF0Xbk6cd97qncl_egKnwgkNLHoDFWqZaesy2Dqw4o1C7zpzQt_W18zuHiYrVC9LfqytnKsxe6gkY_s4t6xhnEyfWC-GFr7f7pwGszTPZIlFg2W4Rdyn3aAgcVg4c-cJTm05tQyXUloCrhUlI9unQT1toROsOPQoYuh_MHSirReIWF0jCt4_2iJVjb3yQ6TLAk8hd4MRrVSqoHEYPrnrhM6pvbNLUt4SDCzQ5GYdIc487aXUqzrx5motcPb8qq5eT9vRok2bvh_uVUqxtEymhsoJZvxAUKpSKqk8VvC9IUyBpbU1Q9_TX8Dg0OZinCGGem2inSb4euGrpTL7MKgpFMkbH--ElXOV6FtMv3CIp8pHga-4S5IsU2Jpshtzc63FBif1eE8XWZLFqVEuZJXvznYhJxLreXNvIu34Ovlhbl0Bm91iTl-yEuzfTDU5yGPPAIgndo0fZBMianXUtXoiQ07itztC3ZkTgqvcqOqbIgD0Km-XKrG1ZS2kOj_7ImNXjxseKQwV9pcj2kRx8EQpQY4Fqf3KGytYbO9yknWwas3B7_rwjxJYVU3lGS3pEmhLvCzlnCl1s65lrfB_tGFunMyXEWvOW3pe4VTJtr1EbYtOQq40iNRh0KXr9Bg0cGDDB6a5-szRlhtG6JknpBsrQn7g7xBufvXp6u19dfSgJZ-Ck5hgAZx_2K3dg3j6xeRIjYsnNQsca13iqjoX-zZgTU1u_nXI0BYfTi5Xam6dp0P96ObUKjcwbi6jv7d9KSmRQdzT4E9Qutasm8t_cEDswMELK33MGe-TIuR60Xp1KgZC4XRxA97Wk4ijlWik1CIHMadhUuv6MeYvpT4z9WrpXQhdlGKO1zDeKpKIO3VE7QiACW51gpzrHaMhdhs9sOGOwC12ccMdExfCpJcn5lXtAbkhYtgrsnip62B3e_irbJ8KX1Dpjdl-WSQezXizB6aDjcXldU5QKNykK_DY8fUgS8AhPHJGXtLehulabeQcqgu-ZKUbqzo7r2puef94LO6RDJ3ZJwTQ8tIg3MxzcsPiwImPLjMLFKDV7Ge9nnIzIIQP4Pd9DZXWX8Os3u1iG2oHfCGkFWVwe2nnKLK5fqQnl0kd2KAPW7sWYFfDsThPpkLLDOA7SNxjkKFmsd7zf-1PieS6vcRd3poC4VBq5FUohLZoLVph-X8hKW6xeXai7BgGlVymAdV60qhbgrf_haRHgkhu-ApX5V2rrH5RsH0gxcCptPtA3t8fRajZbCJTrwBy7W8bZDGxJe5r-Po1LOteDFuZoQGZNtTsHwD5OgwtwwjKpPqEnyTaqSZ4FnF3ZUpC4nt0hhpSF0XkVaxoVy-BMmQhEeO9Me9h5vAxsKJmH4Ja2apHUD7U5hVNN32P54eHC2n3Td1q0-PguVD1sqUHjqj6_4xYld_KLhVlq1-vxv4qJJ1jO3_lbW0_Nn3urNyOGp9ixV65luGQgvQwRe1BSULoPwZXK9Xh4rmStHlnhc6uMv0OUJiXC-GXKGWX6YK_6SrQqTE06C8kcba466wQAB_eZcIZMxFp04h2-sNnzYkKq7eC1aNUrO9z27T57wSC4b1yDh5TE8HtGS2onGVHOCOqUK178-hmZXI3uOgrmczemOrF0zYVK1jEtjGPowVFBWy8DF_rlqBjsVP1-CrDQGz3fIKZWZoDJRDvq1Wnznfg5ZEp8b0h4aZ4tX0jrtgKVBxlzJ94FaPWwDc1Ty0DgElu88SRqdVkYjQcPHfqjkws_L8KnZBcCmmdo-BY5kF4a2qQI3PzpKzsOvq34SlVCh1U4EFdulFq3Y34MgRkSYpPpXgPXGzZ6mn0nvH2LQtHrzZxS52WGEpsmC3omipGMa2r0SB-u21tKf2y_6ytVIZQFiXNFfBaLBeM_P8CI4KCya-wDFWqlaEqsZ828m0BDWI6fIdZmRAKaBbrrlQiADnk4dTkOvguIqu6Mfkp5ZjA2FQoTxe2USEayzk9AuzITQGgPg1SalijYDkf8rEuQ4Lov7KKl1mfziSZL2EaqId5q6Na6rKy5eGsefi_aaPfz5Per8wWedmj04N9tUsiAwAKJXtE3aCbKi9zEDH4Zw-O6HGyxFdbVI0kESPrVCBH_u1kWKo3cu4h63Y-9elpGQqQW-LH3LfVpFSJNPxELQNCDaz_zlzj3WKjs5h1dSrOj-H0OIIR2BbKJ1zoqd-liT2tpFss9r8moaJ4__HkrBZMmt8tz9D4Uu4XjfH4hOTGg8jvdM5bb9ysZ7Pa83crjYft9LjLU1rVDWTV7OjVJ45_LWycKrp8LSMsvzK7qe3WB1wWZghTf1Rj0os9NYqqTYGIKL_D02KRIqayXzq37orBKDpzRNFXUsnj1OXo1yOPv6NrmCN3Oe7jJP5yfuUhlwHXFm0OkbkYphDGvTxNK85Fyc"
+                            class="img-fluid film-poster" alt="" />
+                    </div>
+                    <div class="col-xl-9 col-lg-8 col-md-7 col-sm-6">
+                        <div class="fs-2">Название фильма</div>
+                        <div class="pb-2">Описание фильма</div>
+                        <div class="btn btn-sm btn-outline-primary">Добавить в избранное +</div>
+
+                        <div class="pt-4">
+                            <div class="fs-4 pb-1">О фильме</div>
+                            <div class="d-flex border-bottom pb-1 justify-content-between">
+                                <div class="text-muted">Год производства</div>
+                                <div class="fw-bold">1998</div>
+                            </div>
+                            <div class="d-flex border-bottom pb-1 pt-1 justify-content-between">
+                                <div class="text-muted">Страна</div>
+                                <div class="fw-bold">США</div>
+                            </div>
+                            <div class="d-flex border-bottom pb-1 pt-1 justify-content-between">
+                                <div class="text-muted">Жанр</div>
+                                <div class="fw-bold">Драма</div>
+                            </div>
+                            <div class="d-flex border-bottom pb-1 pt-1 justify-content-between">
+                                <div class="text-muted">Время</div>
+                                <div class="fw-bold">142 м.</div>
+                            </div>
+                            <div class="d-flex border-bottom pb-1 pt-1 justify-content-between">
+                                <div class="text-muted">Слоган</div>
+                                <div class="fw-bold">Най-на-на</div>
+                            </div>
+                            <div class="d-flex border-bottom pb-1 pt-1 justify-content-between">
+                                <div class="text-muted">Режиссер</div>
+                                <div class="fw-bold">Фрэнк</div>
+                            </div>
+                            <div class="d-flex border-bottom pb-1 pt-1 justify-content-between">
+                                <div class="text-muted">Бюджет</div>
+                                <div class="fw-bold">$25 000 000</div>
+                            </div>
+                            <div class="d-flex border-bottom pb-1 pt-1 justify-content-between">
+                                <div class="text-muted">Сборы в мире</div>
+                                <div class="fw-bold">$25 000 001</div>
+                            </div>
+                            <div class="d-flex pt-1 justify-content-between">
+                                <div class="text-muted">Возраст</div>
+                                <div class="d-flex align-items-center badge bg-secondary">16+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fs-4">Отзывы и оценки</div>
+                <div class="card mt-2">
+                    <div class="card-header text-muted">Добавить отзыв</div>
+                    <div class="card-body">
+                        <p>Текст отзыва</p>
+                        <textarea class="form-control" rows="3"></textarea>
+                        <p class="fw-bold pt-3">Оценка</p>
+                        <select class="form-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5" selected>5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <div class="form-check pt-2 pb-2">
+                            <input class="form-check-input" type="checkbox" value="" id="">
+                            <label class="form-check-label" for="flexCheckDefault">Оставить отзыв анонимно</label>
+                        </div>
+                        <div class="btn btn-primary">Сохранить</div>
+                    </div>
+                </div>
+
+                <div class="container pt-4 pb-4" id="reviews-container">
+                    <div class="card border border-2 border-success" id="sample-card-review">
+                        <div class="card-header header-review d-flex justify-content-between">
+                            <div class="d-flex">
+                                <img src="https://www.meme-arsenal.com/memes/4a7a81aaa873f3cb05354b8fe59124bd.jpg"
+                                    class="img-fluid rounded-circle avatar" alt="" />
+                                <div class="d-flex align-items-center fw-bold ps-3">BulkinDrive</div>
+                            </div>
+                            <div>
+                                <div class="d-flex">
+                                    <div class="pe-1">Оценка:</div>
+                                    <div class="d-flex align-items-center badge bg-success">8</div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="text-nowrap pe-1">Дата отзыва:</div>
+                                    <div>05.05.2005</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                «Побег из Шоушенка» - экранизация романа Стивена Кинга. На мой взгляд, это редчайший
+                                случай, когда фильм превзошел литературное произведение, по которому он был создан. И,
+                                несмотря на то, что ставить картину по книге всегда сложно, это тот пример, когда фильм
+                                не только прекрасно передал на экране всю глубину, атмосферу и смысловой стержень
+                                замечательной книги Кинга, но и оказался сильнее, превзойдя оригинал.
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn btn-sm btn-warning">Редактировать</div>
+                            <div class="btn btn-sm btn-danger">Удалить</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
