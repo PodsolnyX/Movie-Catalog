@@ -1,6 +1,10 @@
 body {
     background-color:rgb(245, 244, 244);
 }
+.film-poster-catalog {
+    height: 100px;
+    width: auto;
+}
 .header-review{
     height: 70px;
 }
