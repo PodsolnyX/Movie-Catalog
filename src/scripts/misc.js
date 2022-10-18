@@ -2,6 +2,10 @@ export function NumberWithSpaces(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+export function CalculateDateReview(dateTime){
+    return `${dateTime.slice(8,10)}.${dateTime.slice(5,7)}.${dateTime.slice(0,4)}`
+}
+
 export function CalculateGenresString(movie) {
     let genres = "";
 
