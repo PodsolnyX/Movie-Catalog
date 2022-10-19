@@ -1,12 +1,18 @@
 import{NumberWithSpaces, CalculateGenresString, СalculateMediumRating, CalculateDateReview} from "./misc.js";
 import{Router} from "./router.js"
 
-$(document).ready(function () {
-    LoadCatalogMovies();
-});
+window.addEventListener("load", () => {
+    RegisterClickReferenceEvents()
+    Router.dispatch(window.location.pathname);
+})
 
-export function LoadCatalogMovies() {
-    fetch("https://react-midterm.kreosoft.space/api/movies/1")
+window.addEventListener("popstate", () => {
+    RegisterClickReferenceEvents()
+    Router.dispatch(window.location.pathname);
+})
+
+export function LoadCatalogMovies(id = 1) {
+    fetch(`https://react-midterm.kreosoft.space/api/movies/${id}`)
         .then((response) => {
             return response.json();
         })
@@ -95,3 +101,4 @@ function RegisterClickReferenceEvents() {
 
     for (let anchor of anchors) anchor.onclick = handler;
 }
+

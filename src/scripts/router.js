@@ -1,12 +1,18 @@
 import {LoadCatalogMovies, LoadDetailsMovie} from './scripts.js';
+import viewLogin from "/src/views/view-login.js";
+import viewRegister from "/src/views/view-register.js";
+import viewMoviesCatalog from "/src/views/view-movies-catalog.js";
+import viewMovieDetails from "/src/views/view-movie-details.js";
 
 export var Router = {
 
     routes: {
-        "/": "index",
-        "/:id": "index",
-        "/movie/:id": "movie",
-        "/favorites": "favorites",
+        "/": "movieCatalog",
+        "/:id": "movieCatalog",
+        "/movie/:id": "movieDetails",
+        "/login/": "login",
+        "/register/": "register",
+        "/favorites/": "favorites",
     },
 
     init: function () {
@@ -34,20 +40,26 @@ export var Router = {
         }
     },
 
-    index: function () {
+    movieCatalog: function (id = 1) {
         document.documentElement.scrollIntoView(true);
-        $("#movies-catalog-container").removeClassClass("d-none");
-        $("#movies-nav-container").removeClass("d-none");
-        $("#movie-details-container").addClass("d-none");
-        LoadCatalogMovies();
+        $("main").html(viewMoviesCatalog());
+        LoadCatalogMovies(id);
     },
 
-    movie: function (id) {
+    movieDetails: function (id) {
         document.documentElement.scrollIntoView(true);
-        $("#movies-catalog-container").addClass("d-none");
-        $("#movies-nav-container").addClass("d-none");
-        $("#movie-details-container").removeClass("d-none");
+        $("main").html(viewMovieDetails());
         LoadDetailsMovie(id);
+    },
+
+    login: function () {
+        document.documentElement.scrollIntoView(true);
+        $("main").html(viewLogin());
+    },
+
+    register: function () {
+        document.documentElement.scrollIntoView(true);
+        $("main").html(viewRegister());
     },
 
 }
