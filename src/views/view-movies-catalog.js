@@ -21,18 +21,19 @@ export default () => `
     </a>
 
     <main class="container" id="movies-catalog-container"></main>
+
     <nav class="container pb-5" id="movies-nav-container">
             <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link" href="" aria-label="Предыдущая">
+                    <a class="page-link" href="" aria-label="Предыдущая" id="page-item-back">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <li class="page-item active"><a class="page-link" href="/1">1</a></li>
-                <li class="page-item"><a class="page-link" href="/2">2</a></li>
-                <li class="page-item"><a class="page-link" href="/3">3</a></li>
+                <li class="page-item"><a class="page-link" href="/1" id="page-item-first">1</a></li>
+                <li class="page-item"><a class="page-link" href="/2" id="page-item-second">2</a></li>
+                <li class="page-item"><a class="page-link" href="/3" id="page-item-third">3</a></li>
                 <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Следующая">
+                    <a class="page-link" href="#" aria-label="Следующая" id="page-item-next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

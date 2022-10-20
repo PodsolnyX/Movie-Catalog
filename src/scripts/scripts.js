@@ -34,6 +34,7 @@ export function LoadCatalogMovies(id = 1) {
                 $("#movies-catalog-container").append(block);
             });
             RegisterClickReferenceEvents();
+            InitMoviesNavigation(json);
         })
 };
 
@@ -86,6 +87,33 @@ export function LoadDetailsMovie(id) {
             });
 
         })
+}
+
+function InitMoviesNavigation(json) {
+    if (json.pageInfo.currentPage == 1) {
+        $("#page-item-back").attr("href", "/1");
+        $("#page-item-first").attr("href", "/1").text("1");
+        $("#page-item-second").attr("href", "/2").text("2");
+        $("#page-item-third").attr("href", "/3").text("3");
+        $("#page-item-next").attr("href", "/2");
+        $("#page-item-first").parent().addClass("active");
+    }
+    else if (json.pageInfo.currentPage == json.pageInfo.pageCount) {
+        $("#page-item-back").attr("href", `/${json.pageInfo.currentPage - 1}`);
+        $("#page-item-first").attr("href", `/${json.pageInfo.currentPage - 2}`).text(json.pageInfo.currentPage - 2);
+        $("#page-item-second").attr("href", `/${json.pageInfo.currentPage - 1}`).text(json.pageInfo.currentPage - 1);
+        $("#page-item-third").attr("href", `/${json.pageInfo.currentPage}`).text(json.pageInfo.currentPage);
+        $("#page-item-next").attr("href", `/${json.pageInfo.currentPage}`);
+        $("#page-item-third").parent().addClass("active");
+    }
+    else {
+        $("#page-item-back").attr("href", `/${json.pageInfo.currentPage - 1}`);
+        $("#page-item-first").attr("href", `/${json.pageInfo.currentPage - 1}`).text(json.pageInfo.currentPage - 1);
+        $("#page-item-second").attr("href", `/${json.pageInfo.currentPage}`).text(json.pageInfo.currentPage);
+        $("#page-item-third").attr("href", `/${json.pageInfo.currentPage + 1}`).text(json.pageInfo.currentPage + 1);
+        $("#page-item-next").attr("href", `/${json.pageInfo.currentPage + 1}`);
+        $("#page-item-second").parent().addClass("active");
+    }
 }
 
 function RegisterClickReferenceEvents() {
