@@ -28,7 +28,7 @@ export function СalculateMediumRating(movie) {
 
     if (movie.reviews.length != 0) {
         rating /= movie.reviews.length;
-        rating.toFixed(1);
+        rating = rating.toFixed(1);
     }
 
     return rating
