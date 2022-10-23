@@ -1,7 +1,7 @@
 export default () => `
     <a class="card card-movie-catalog d-none text-decoration-none text-black" id="sample-card">
         <div class="card-body row">
-            <div class="col-xl-1 col-lg-2 col-md-2 col-sm-3  d-flex justify-content-center">
+            <div class="col-xl-1 col-lg-2 col-md-2 col-sm-3 d-flex justify-content-center">
                 <img src="" class="img-fluid film-poster-catalog" alt="" />
             </div>
             <div class="col-xl-9 col-lg-8 col-md-8 col-sm-9 col-12 d-flex flex-column justify-content-between">

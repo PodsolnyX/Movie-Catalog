@@ -8,3 +8,7 @@ body {
 .header-review{
     height: 70px;
 }
+.avatar-profile{
+    max-height: 300px;
+    width: 300px;
+}
