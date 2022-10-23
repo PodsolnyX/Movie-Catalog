@@ -65,7 +65,10 @@ async function PostRequestRegister(userData) {
             },
             body: JSON.stringify(userData)
         }).then(response => response.json())
-            .then(data => { console.log(data); })
+            .then(data => {
+                localStorage.setItem("JWT", data.token);
+                location.pathname = "/";
+            })
     } catch {
         alert("Ошибка регистрации");
     }

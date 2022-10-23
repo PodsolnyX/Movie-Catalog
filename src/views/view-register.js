@@ -39,7 +39,7 @@ export default () => `
                         </select>
                     </div>
                 </div>
-                <div class="btn btn-primary mt-3" type="submit" id="btn-register">Зарегистироваться</div>
+                <div class="btn btn-primary mt-3" type="button" id="btn-register">Зарегистироваться</div>
             </form>
         </div>
     </div>

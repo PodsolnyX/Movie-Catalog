@@ -1,5 +1,3 @@
-import { Router } from "./router.js";
-
 export function Login() {
     document.getElementById("btn-login").addEventListener("click", function () {
 
@@ -27,21 +25,10 @@ async function PostRequestLogin(userData) {
         }).then(response => response.json())
             .then(data => {
                 localStorage.setItem("JWT", data.token);
-                Router.dispatch("/");
+                location.pathname = "/";
             })
     } catch {
         alert("Ошибка авторизации");
     }
 
 }
-
-// async function User(token) {
-//     let response = await fetch('https://react-midterm.kreosoft.space/api/account/profile', {
-//         method: 'GET',
-//         headers: {
-//             'Authorization': 'Bearer ' + token
-//         },
-//     })
-//     let json = await response.json();
-//     console.log(json);
-// }
