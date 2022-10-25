@@ -1,6 +1,5 @@
 export default () => `
-    <main class="container">
-        <div class="card card-movie-catalog text-decoration-none text-black" id="sample-card">
+        <div class="card card-movie-catalog text-decoration-none text-black d-none" id="sample-card">
             <div class="card-body row">
                 <div class="col-xl-1 col-lg-2 col-md-2 col-sm-3  d-flex justify-content-center">
                     <img src="" class="img-fluid film-poster-catalog" alt="" />
@@ -19,9 +18,12 @@ export default () => `
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-3 col-sm d-flex align-items-center">
-                    <div class="btn btn-danger mt-2">Удалить из избранного</div>
+                    <div class="btn btn-danger mt-2 btn-delete-favorites">Удалить из избранного</div>
                 </div>
             </div>
         </div>
+
+    <main class="container" id="movies-favorites-container">
+        <p class="fs-2 pt-5 text-center text-muted" id="favorites-empty">Избранных фильмов нет</p>
     </main>
 `

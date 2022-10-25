@@ -36,7 +36,6 @@ async function CheckAuthorizationUser() {
     if (user.auth == true) {
         $(".nav-item-auth").removeClass("d-none");
         $(".nav-item-not-auth").addClass("d-none");
-        console.log(user.userData.nickName)
         $("#nameUser").text(user.userData.nickName);
         $("#btnLogout").click(function () { Logout() });
     }

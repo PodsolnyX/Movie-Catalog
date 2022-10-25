@@ -33,5 +33,6 @@ export async function Authorization() {
             userData : {}
         }
         localStorage.setItem("user", JSON.stringify(user))
+        location.pathname = "/login/";
     }
 }

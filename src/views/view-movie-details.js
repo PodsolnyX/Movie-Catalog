@@ -35,7 +35,7 @@ export default () => `
                     <div class="col-xl-9 col-lg-8 col-md-7 col-sm-6">
                         <div class="film-name fs-2"></div>
                         <div class="d-none pb-2"></div>
-                        <div class="btn btn-sm btn-outline-primary mt-2">Добавить в Избранное</div>
+                        <div class="btn btn-sm mt-2 d-none" id="btnFavorites"></div>
 
                         <div class="pt-4">
                             <div class="fs-4 pb-1">О фильме</div>

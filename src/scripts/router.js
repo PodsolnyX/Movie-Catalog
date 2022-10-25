@@ -1,11 +1,13 @@
 import {LoadDetailsMovie} from './movie-details.js';
 import {LoadCatalogMovies} from './movies-catalog.js';
+import {LoadFavoritesMovies} from './favorites.js';
 import {Login} from "./login.js";
 import {Register} from "./register.js";
 import viewLogin from "/src/views/view-login.js";
 import viewRegister from "/src/views/view-register.js";
 import viewMoviesCatalog from "/src/views/view-movies-catalog.js";
 import viewMovieDetails from "/src/views/view-movie-details.js";
+import viewFavorites from "/src/views/view-favorites.js";
 
 export var Router = {
 
@@ -66,5 +68,11 @@ export var Router = {
         $("main").html(viewRegister());
         Register();
     },
+
+    favorites: function () {
+        document.documentElement.scrollIntoView(true);
+        $("main").html(viewFavorites());
+        LoadFavoritesMovies();
+    }
 
 }

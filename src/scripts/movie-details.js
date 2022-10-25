@@ -1,11 +1,12 @@
 import{NumberWithSpaces, CalculateGenresString, CalculateDateReview} from "./misc.js";
+import{IsMovieFavorites, AddMovieToFavorites, DeleteMovieFromFavorites} from "./favorites.js";
 
 export function LoadDetailsMovie(id) {
     fetch(`https://react-midterm.kreosoft.space/api/movies/details/${id}`)
         .then((response) => {
             return response.json();
         })
-        .then((movie) => {
+        .then(async (movie) => {
             let block = $("#movie-details-container");
             block.find(".film-poster").attr("src", movie.poster);
             block.find(".film-name").text(`${movie.name} (${movie.year})`);
@@ -18,6 +19,22 @@ export function LoadDetailsMovie(id) {
             block.find(".film-budget").text(`$${NumberWithSpaces(movie.budget)}`);
             block.find(".film-fees").text(`$${NumberWithSpaces(movie.fees)}`);
             block.find(".film-ageLimit").text(`${movie.ageLimit}+`);
+
+            const user = JSON.parse(localStorage.getItem("user"));
+
+            if (user.auth == true) {
+                $("#btnFavorites").removeClass("d-none");
+                if (!(await IsMovieFavorites(id))) {
+                    $("#btnFavorites").text("Добавить в избранное");
+                    $("#btnFavorites").addClass("btn-outline-primary");
+                    $("#btnFavorites").click(function () { AddMovieToFavorites(id) });
+                }
+                else {
+                    $("#btnFavorites").text("Удалить из избранного");
+                    $("#btnFavorites").addClass("btn-outline-danger");
+                    $("#btnFavorites").click(function () { DeleteMovieFromFavorites(id) });
+                }
+            }
 
             $("#reviews-container").empty();
             $("#reviews-container").text("Отзывов нет");
@@ -50,3 +67,4 @@ export function LoadDetailsMovie(id) {
 
         })
 }
+
