@@ -53,12 +53,9 @@ export async function IsMovieFavorites(id) {
     const json = await response.json();
     let flag = false;
     json.movies.forEach(function (movie, i, arr) {
-        if (movie.id == id) {
+        if (movie.id == id)
             flag = true;
-           
-        }    
-    }); 
-    console.log(flag)
+    });
     return flag;
 }
 
