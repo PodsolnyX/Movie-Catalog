@@ -1,13 +1,12 @@
 export function Register() {
     $("#btn-register").click(function () {
-        const userName = $("#inputUserName").val(),
-            password = $("#inputPassword").val(),
-            passwordConfirmation = $("#inputPasswordConfirmation").val(),
-            email = $("#inputEmail").val(),
+        const userName = String($("#inputUserName").val()),
+            password = String($("#inputPassword").val()),
+            passwordConfirmation = String($("#inputPasswordConfirmation").val()),
+            email = String($("#inputEmail").val()),
             name = $("#inputName").val(),
             birthDate = $("#inputBirthDate").val(),
             gender = $("#inputGender").val();
-
 
         if (userName == "") {
             alert("Введите логин");
@@ -33,8 +32,20 @@ export function Register() {
             alert("Введите ФИО");
             return;
         }
-        if (password != passwordConfirmation) {
+        if (password.length < 6) {
+            alert("Пароль слишком короткий");
+            return;
+        }
+        else if (userName.length < 2) {
+            alert("Логин слишком короткий");
+            return;
+        }
+        else if (password != passwordConfirmation) {
             alert("Пароли не совпадают");
+            return;
+        }
+        else if (!email.match(/^\S+@\S+\.\S+$/)) {
+            alert("Email неккоректен");
             return;
         }
         else if (Date.parse(birthDate) > Date.now()) {
@@ -57,18 +68,22 @@ export function Register() {
 
 async function PostRequestRegister(userData) {
     try {
-        fetch('https://react-midterm.kreosoft.space/api/account/register', {
+        const response = fetch('https://react-midterm.kreosoft.space/api/account/register', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(userData)
-        }).then(response => response.json())
-            .then(data => {
-                localStorage.setItem("JWT", data.token);
-                location.pathname = "/";
-            })
+        })
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem("JWT", data.token);
+            location.pathname = "/";
+        }
+        else {
+            alert("Ошибка регистрации");
+        }
     } catch {
         alert("Ошибка регистрации");
     }

@@ -7,6 +7,7 @@ export async function Authorization() {
             userData : {}
         }
         localStorage.setItem("user", JSON.stringify(user))
+        return;
     }
     
     try {
