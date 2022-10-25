@@ -1,6 +1,7 @@
 import {LoadDetailsMovie} from './movie-details.js';
 import {LoadCatalogMovies} from './movies-catalog.js';
-import {Login} from "./login.js"
+import {Login} from "./login.js";
+import {Register} from "./register.js";
 import viewLogin from "/src/views/view-login.js";
 import viewRegister from "/src/views/view-register.js";
 import viewMoviesCatalog from "/src/views/view-movies-catalog.js";
@@ -43,9 +44,9 @@ export var Router = {
     },
 
     movieCatalog: function (id = 1) {
-        // document.documentElement.scrollIntoView(true);
-        // $("main").html(viewMoviesCatalog());
-        // LoadCatalogMovies(id);
+        document.documentElement.scrollIntoView(true);
+        $("main").html(viewMoviesCatalog());
+        LoadCatalogMovies(id);
     },
 
     movieDetails: function (id) {
@@ -63,6 +64,7 @@ export var Router = {
     register: function () {
         document.documentElement.scrollIntoView(true);
         $("main").html(viewRegister());
+        Register();
     },
 
 }
