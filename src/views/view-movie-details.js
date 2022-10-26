@@ -20,8 +20,8 @@ export default () => `
             <p class="review-text"></p>
         </div>
         <div class="card-footer d-none">
-            <div class="btn btn-sm btn-warning">Редактировать</div>
-            <div class="btn btn-sm btn-danger">Удалить</div>
+            <div class="btn btn-sm btn-warning btn-edit-rewiew">Редактировать</div>
+            <div class="btn btn-sm btn-danger btn-delete-rewiew">Удалить</div>
         </div>
     </div>
 
@@ -79,13 +79,13 @@ export default () => `
                     </div>
                 </div>
                 <div class="fs-4">Отзывы и оценки</div>
-                <div class="card mt-2 d-none">
-                    <div class="card-header text-muted">Добавить отзыв</div>
+                <div class="card mt-2 d-none" id="formAddReview">
+                    <div class="card-header text-muted" id="labelFormReview">Добавить отзыв</div>
                     <div class="card-body">
                         <p>Текст отзыва</p>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" rows="3" id="inputTextReview"></textarea>
                         <p class="fw-bold pt-3">Оценка</p>
-                        <select class="form-select">
+                        <select class="form-select" id="inputRating">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -98,10 +98,10 @@ export default () => `
                             <option value="10">10</option>
                         </select>
                         <div class="form-check pt-2 pb-2">
-                            <input class="form-check-input" type="checkbox" value="" id="">
+                            <input class="form-check-input" type="checkbox" value="true" id="inputAnonymous">
                             <label class="form-check-label" for="flexCheckDefault">Оставить отзыв анонимно</label>
                         </div>
-                        <div class="btn btn-primary">Сохранить</div>
+                        <div class="btn btn-primary" id="btnSave">Сохранить</div>
                     </div>
                 </div>
 
