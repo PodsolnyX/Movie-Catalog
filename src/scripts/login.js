@@ -1,3 +1,5 @@
+import {api} from "../api.js";
+
 export function Login() {
     document.getElementById("btn-login").addEventListener("click", function () {
 
@@ -15,7 +17,7 @@ export function Login() {
 
 async function PostRequestLogin(userData) {
     try {
-        await fetch('https://react-midterm.kreosoft.space/api/account/login', {
+        await fetch(`${api}/api/account/login`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

@@ -1,3 +1,5 @@
+import {api} from "../api.js";
+
 export function Register() {
     $("#btn-register").click(function () {
         const userName = String($("#inputUserName").val()),
@@ -68,7 +70,7 @@ export function Register() {
 
 async function PostRequestRegister(userData) {
     try {
-        const response = fetch('https://react-midterm.kreosoft.space/api/account/register', {
+        const response = fetch(`${api}/api/account/register`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

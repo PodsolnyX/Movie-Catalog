@@ -1,3 +1,5 @@
+import {api} from "../api.js";
+
 export function IsUserReview(userId, reviews) {
     let index = -1;
     for (let i = 0; i < reviews.length; i++) {
@@ -19,7 +21,7 @@ export async function AddNewReview(movieId) {
         rating: $("#inputRating").val(),
         isAnonymous: $("#inputAnonymous").is(':checked') ? true : false
     }
-    const response = await fetch(`https://react-midterm.kreosoft.space/api/movie/${movieId}/review/add`, {
+    const response = await fetch(`${api}/api/movie/${movieId}/review/add`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -38,7 +40,7 @@ export async function AddNewReview(movieId) {
 }
 
 export async function DeleteReview(movieId, reviewId) {
-    const response = await fetch(`https://react-midterm.kreosoft.space/api/movie/${movieId}/review/${reviewId}/delete`, {
+    const response = await fetch(`${api}/api/movie/${movieId}/review/${reviewId}/delete`, {
         method: 'DELETE',
         headers: {
             'Accept': 'application/json',
@@ -65,7 +67,7 @@ export async function EditReview(movieId, reviewId) {
         rating: $("#inputRating").val(),
         isAnonymous: $("#inputAnonymous").is(':checked') ? true : false
     }
-    const response = await fetch(`https://react-midterm.kreosoft.space/api/movie/${movieId}/review/${reviewId}/edit`, {
+    const response = await fetch(`${api}/api/movie/${movieId}/review/${reviewId}/edit`, {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',

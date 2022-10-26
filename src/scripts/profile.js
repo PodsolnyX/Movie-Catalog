@@ -1,3 +1,5 @@
+import {api} from "../api.js";
+
 export async function LoadProfileInfo() {
 
     const user = (JSON.parse(localStorage.getItem("user"))).userData;
@@ -70,7 +72,7 @@ async function SaveProfile(user) {
 
 async function PutRequestProfile(userData) {
     try {
-        const response = await fetch('https://react-midterm.kreosoft.space/api/account/profile', {
+        const response = await fetch(`${api}/api/account/profile`, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',

@@ -1,3 +1,5 @@
+import {api} from "../api.js";
+
 export async function Authorization() {
     const token = localStorage.getItem("JWT");
 
@@ -11,7 +13,7 @@ export async function Authorization() {
     }
     
     try {
-        const response = await fetch('https://react-midterm.kreosoft.space/api/account/profile', {
+        const response = await fetch(`${api}/api/account/profile`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

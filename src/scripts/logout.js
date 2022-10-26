@@ -1,3 +1,5 @@
+import {api} from "../api.js";
+
 export function Logout() {
     const token = localStorage.getItem("JWT");
     localStorage.clear("JWT");
@@ -12,7 +14,7 @@ export function Logout() {
         return;
 
     try {
-        fetch('https://react-midterm.kreosoft.space/api/account/logout', {
+        fetch(`${api}/api/account/logout`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

@@ -1,7 +1,8 @@
 import { CalculateGenresString, СalculateMediumRating } from "./misc.js";
+import {api} from "../api.js";
 
 export async function LoadFavoritesMovies() {
-    const response = await fetch('https://react-midterm.kreosoft.space/api/favorites', {
+    const response = await fetch(`${api}/api/favorites`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -30,7 +31,7 @@ export async function LoadFavoritesMovies() {
 };
 
 export async function AddMovieToFavorites(id) {
-    const response = await fetch(`https://react-midterm.kreosoft.space/api/favorites/${id}/add`, {
+    const response = await fetch(`${api}/api/favorites/${id}/add`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -42,7 +43,7 @@ export async function AddMovieToFavorites(id) {
 }
 
 export async function IsMovieFavorites(id) {
-    const response = await fetch('https://react-midterm.kreosoft.space/api/favorites', {
+    const response = await fetch(`${api}/api/favorites`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -60,7 +61,7 @@ export async function IsMovieFavorites(id) {
 }
 
 export async function DeleteMovieFromFavorites(id) {
-    const response = await fetch(`https://react-midterm.kreosoft.space/api/favorites/${id}/delete`, {
+    const response = await fetch(`${api}/api/favorites/${id}/delete`, {
         method: 'DELETE',
         headers: {
             'Accept': 'application/json',

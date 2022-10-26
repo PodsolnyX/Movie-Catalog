@@ -1,0 +1,1 @@
+export const api = "https://react-midterm.kreosoft.space";

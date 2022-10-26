@@ -1,9 +1,10 @@
 import { NumberWithSpaces, CalculateGenresString, CalculateDateReview } from "./misc.js";
 import { IsMovieFavorites, AddMovieToFavorites, DeleteMovieFromFavorites } from "./favorites.js";
 import { IsUserReview, AddNewReview, DeleteReview, EditReview} from "./review.js";
+import {api} from "../api.js";
 
 export function LoadDetailsMovie(id) {
-    fetch(`https://react-midterm.kreosoft.space/api/movies/details/${id}`)
+    fetch(`${api}/api/movies/details/${id}`)
         .then((response) => {
             return response.json();
         })

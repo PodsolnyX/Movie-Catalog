@@ -1,7 +1,8 @@
 import{CalculateGenresString, СalculateMediumRating} from "./misc.js";
+import {api} from "../api.js";
 
 export function LoadCatalogMovies(id = 1) {
-    fetch(`https://react-midterm.kreosoft.space/api/movies/${id}`)
+    fetch(`${api}/api/movies/${id}`)
         .then((response) => {
             return response.json();
         })
