@@ -1,10 +1,19 @@
-import {api} from "../api.js";
+import { api } from "../api.js";
 
 export function Login() {
     document.getElementById("btn-login").addEventListener("click", function () {
 
         const login = $("#inputLogin").val(),
             password = $("#inputPassword").val();
+
+        if (login == "") {
+            alert("Введите логин");
+            return;
+        }
+        else if (password == "") {
+            alert("Введите пароль");
+            return;
+        }
 
         const userData = {
             username: login,
@@ -16,21 +25,25 @@ export function Login() {
 }
 
 async function PostRequestLogin(userData) {
-    try {
-        await fetch(`${api}/api/account/login`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        }).then(response => response.json())
-            .then(data => {
-                localStorage.setItem("JWT", data.token);
-                location.pathname = "/";
-            })
-    } catch {
-        alert("Ошибка авторизации");
-    }
-
+    fetch(`${api}/api/account/login`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error("Ошибка");
+        })
+        .then(json => {
+            localStorage.setItem("JWT", json.token);
+            location.pathname = "/";
+        })
+        .catch(err => {
+            alert(err);
+        });
 }

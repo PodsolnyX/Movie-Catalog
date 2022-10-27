@@ -1,6 +1,6 @@
-import {api} from "../api.js";
+import { api } from "../api.js";
 
-export async function LoadProfileInfo() {
+export function LoadProfileInfo() {
 
     const user = (JSON.parse(localStorage.getItem("user"))).userData;
 
@@ -14,7 +14,7 @@ export async function LoadProfileInfo() {
     $("#inputBirthdate").val(user.birthDate.slice(0, 10));
     $("#inputGender").val(user.gender);
     $("#btnEdit").click(function () { EditProfile() });
-    $("#btnSave").click(async function () { SaveProfile(user) });
+    $("#btnSave").click(function () { SaveProfile(user) });
 };
 
 function EditProfile() {
@@ -29,7 +29,7 @@ function EditProfile() {
     $("#inputGender").removeAttr("disabled");
 }
 
-async function SaveProfile(user) {
+function SaveProfile(user) {
     const email = String($("#inputEmail").val()),
         avatarLink = $("#inputAvatar").val() == "" ? null : $("#inputAvatar").val(),
         name = $("#inputName").val(),
@@ -67,28 +67,26 @@ async function SaveProfile(user) {
         gender: gender == 1 ? 1 : 0
     }
 
-    await PutRequestProfile(newUserData);
+    PutRequestProfile(newUserData);
 }
 
-async function PutRequestProfile(userData) {
-    try {
-        const response = await fetch(`${api}/api/account/profile`, {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("JWT")
-            },
-            body: JSON.stringify(userData)
+function PutRequestProfile(userData) {
+    fetch(`${api}/api/account/profile`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem("JWT")
+        },
+        body: JSON.stringify(userData)
+    })
+        .then(response => {
+            if (response.ok) {
+                return location.reload();
+            }
+            throw new Error("Ошибка");
         })
-        if (response.ok) {
-            location.reload();
-        }
-        else {
-            alert("Ошибка")
-        }
-    } catch {
-        alert("Ошибка");
-    }
-
+        .catch(err => {
+            alert("Ошибка");
+        });
 }

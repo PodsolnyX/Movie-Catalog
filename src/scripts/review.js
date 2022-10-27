@@ -1,4 +1,4 @@
-import {api} from "../api.js";
+import { api } from "../api.js";
 
 export function IsUserReview(userId, reviews) {
     let index = -1;
@@ -11,17 +11,19 @@ export function IsUserReview(userId, reviews) {
     return index;
 }
 
-export async function AddNewReview(movieId) {
+export function AddNewReview(movieId) {
     if ($("#inputTextReview").val() == "") {
         alert("Текст отзыва пустой")
         return;
     }
+
     const reviewData = {
         reviewText: $("#inputTextReview").val(),
         rating: $("#inputRating").val(),
         isAnonymous: $("#inputAnonymous").is(':checked') ? true : false
     }
-    const response = await fetch(`${api}/api/movie/${movieId}/review/add`, {
+
+    fetch(`${api}/api/movie/${movieId}/review/add`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -29,45 +31,51 @@ export async function AddNewReview(movieId) {
             'Authorization': 'Bearer ' + localStorage.getItem("JWT")
         },
         body: JSON.stringify(reviewData)
-    });
-    if (response.ok) {
-        location.reload();
-    }
-    else {
-        alert("О, нет!");
-    }
-
+    })
+        .then(response => {
+            if (response.ok) {
+                return location.reload();
+            }
+            throw new Error("Ошибка добавления отзыва");
+        })
+        .catch(err => {
+            alert(err);
+        });
 }
 
-export async function DeleteReview(movieId, reviewId) {
-    const response = await fetch(`${api}/api/movie/${movieId}/review/${reviewId}/delete`, {
+export function DeleteReview(movieId, reviewId) {
+    fetch(`${api}/api/movie/${movieId}/review/${reviewId}/delete`, {
         method: 'DELETE',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem("JWT")
         }
-    });
-    if (response.ok) {
-        location.reload();
-    }
-    else {
-        alert("О, нет!");
-    }
+    })
+        .then(response => {
+            if (response.ok) {
+                return location.reload();
+            }
+            throw new Error("Ошибка удаления отзыва");
+        })
+        .catch(err => {
+            alert(err);
+        });
 }
 
-export async function EditReview(movieId, reviewId) {
+export function EditReview(movieId, reviewId) {
     if ($("#inputTextReview").val() == "") {
         alert("Текст отзыва пустой")
         return;
     }
-    console.log($("#inputAnonymous").is(':checked'))
+
     const reviewData = {
         reviewText: $("#inputTextReview").val(),
         rating: $("#inputRating").val(),
         isAnonymous: $("#inputAnonymous").is(':checked') ? true : false
     }
-    const response = await fetch(`${api}/api/movie/${movieId}/review/${reviewId}/edit`, {
+
+    fetch(`${api}/api/movie/${movieId}/review/${reviewId}/edit`, {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',
@@ -75,11 +83,14 @@ export async function EditReview(movieId, reviewId) {
             'Authorization': 'Bearer ' + localStorage.getItem("JWT")
         },
         body: JSON.stringify(reviewData)
-    });
-    if (response.ok) {
-        location.reload();
-    }
-    else {
-        alert((await response.json()).message);
-    }
+    })
+        .then(response => {
+            if (response.ok) {
+                return location.reload();
+            }
+            throw new Error("Ошибка редактирования отзыва");
+        })
+        .catch(err => {
+            alert(err);
+        });
 }

@@ -39,12 +39,17 @@ export var Router = {
         history.pushState({}, "", path)
 
         var i = this._routes.length;
+        let flagFound = false;
 
         while (i--) {
             var args = path.match(this._routes[i].pattern);
             if (args) {
+                flagFound = true;
                 this._routes[i].callback.apply(this, args.slice(1))
             }
+        }
+        if (!flagFound) {
+            alert("Page not found");
         }
     },
 
@@ -62,24 +67,44 @@ export var Router = {
 
     login: function () {
         document.documentElement.scrollIntoView(true);
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user.auth == true) {
+            Router.dispatch("/profile/");
+            return;
+        }
         $("main").html(viewLogin());
         Login();
     },
 
     register: function () {
         document.documentElement.scrollIntoView(true);
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user.auth == true) {
+            Router.dispatch("/profile/");
+            return;
+        }
         $("main").html(viewRegister());
         Register();
     },
 
     favorites: function () {
         document.documentElement.scrollIntoView(true);
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user.auth == false) {
+            Router.dispatch("/login/");
+            return;
+        }
         $("main").html(viewFavorites());
         LoadFavoritesMovies();
     },
 
     profile: function () {
         document.documentElement.scrollIntoView(true);
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user.auth == false) {
+            Router.dispatch("/login/");
+            return;
+        }
         $("main").html(viewProfile());
         LoadProfileInfo();
     }

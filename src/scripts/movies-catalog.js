@@ -1,31 +1,46 @@
-import{CalculateGenresString, СalculateMediumRating} from "./misc.js";
-import {api} from "../api.js";
+import { CalculateGenresString, СalculateMediumRating } from "./misc.js";
+import { api } from "../api.js";
+import { Router } from "./router.js";
 
 export function LoadCatalogMovies(id = 1) {
     fetch(`${api}/api/movies/${id}`)
-        .then((response) => {
-            return response.json();
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error("Ошибка");
         })
-        .then((json) => {
-            $("#movies-catalog-container").empty();
-            let template = $("#sample-card");
+        .then(json => {
+            if (json.pageInfo.pageCount < id) {
+                Router.dispatch(`/${json.pageInfo.pageCount}`);
+                return;
+            }
             json.movies.forEach(function (movie, i, arr) {
-                let block = template.clone();
-                block.attr("id", "movie" + movie.id);
-                block.attr("data-id", movie.id);
-                block.attr("href", "/movie/" + movie.id);
-                block.find(".film-poster-catalog").attr("src", movie.poster);
-                block.find(".film-name").text(movie.name);
-                block.find(".film-year").text(movie.year);
-                block.find(".film-country").text(movie.country);
-                block.find(".film-genre").text(`•${CalculateGenresString(movie)}`);
-                block.find(".film-rating").text(`Средняя оценка - ${СalculateMediumRating(movie)}`);
-                block.removeClass("d-none");
-                $("#movies-catalog-container").append(block);
+                CreateMovieCard(movie);
             });
             InitMoviesNavigation(json);
         })
+        .catch(err => {
+            alert("Page not found!");
+            Router.dispatch(`/`);
+        });
 };
+
+function CreateMovieCard(movie) {
+    let template = $("#sample-card");
+    let block = template.clone();
+    block.attr("id", "movie" + movie.id);
+    block.attr("data-id", movie.id);
+    block.attr("href", "/movie/" + movie.id);
+    block.find(".film-poster-catalog").attr("src", movie.poster);
+    block.find(".film-name").text(movie.name);
+    block.find(".film-year").text(movie.year);
+    block.find(".film-country").text(movie.country);
+    block.find(".film-genre").text(`•${CalculateGenresString(movie)}`);
+    block.find(".film-rating").text(`Средняя оценка - ${СalculateMediumRating(movie)}`);
+    block.removeClass("d-none");
+    $("#movies-catalog-container").append(block);
+}
 
 function InitMoviesNavigation(json) {
     if (json.pageInfo.currentPage == 1) {

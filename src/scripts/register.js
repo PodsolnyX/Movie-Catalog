@@ -1,4 +1,4 @@
-import {api} from "../api.js";
+import { api } from "../api.js";
 
 export function Register() {
     $("#btn-register").click(function () {
@@ -68,27 +68,27 @@ export function Register() {
     });
 }
 
-async function PostRequestRegister(userData) {
-    try {
-        const response = fetch(`${api}/api/account/register`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
+function PostRequestRegister(userData) {
+    fetch(`${api}/api/account/register`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error("Ошибка");
         })
-        if (response.ok) {
-            const data = await response.json();
-            localStorage.setItem("JWT", data.token);
-            location.pathname = "/";
-        }
-        else {
+        .then(json => {
+            localStorage.setItem("JWT", json.token);
+            location.pathname = "/"
+        })
+        .catch(err => {
             alert("Ошибка регистрации");
-        }
-    } catch {
-        alert("Ошибка регистрации");
-    }
-
+        });
 }
 

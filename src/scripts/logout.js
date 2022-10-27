@@ -1,4 +1,4 @@
-import {api} from "../api.js";
+import { api } from "../api.js";
 
 export function Logout() {
     const token = localStorage.getItem("JWT");
@@ -13,18 +13,14 @@ export function Logout() {
     if (!token)
         return;
 
-    try {
-        fetch(`${api}/api/account/logout`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-            }
-        });
-    } catch {
-        alert("Ошибка выходы из аккаунта");
-    }
-    
+    fetch(`${api}/api/account/logout`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }})
+        .then(response => location.reload());
+
     location.reload();
 }
