@@ -4,12 +4,6 @@ import {LoadFavoritesMovies} from './favorites.js';
 import {LoadProfileInfo} from './profile.js';
 import {Login} from "./login.js";
 import {Register} from "./register.js";
-import viewLogin from "/src/views/view-login.js";
-import viewRegister from "/src/views/view-register.js";
-import viewMoviesCatalog from "/src/views/view-movies-catalog.js";
-import viewMovieDetails from "/src/views/view-movie-details.js";
-import viewFavorites from "/src/views/view-favorites.js";
-import viewProfile from "/src/views/view-profile.js";
 
 export var Router = {
 
@@ -55,14 +49,18 @@ export var Router = {
 
     movieCatalog: function (id = 1) {
         document.documentElement.scrollIntoView(true);
-        $("main").html(viewMoviesCatalog());
-        LoadCatalogMovies(id);
+        $.get('/src/views/view-movies-catalog.html', function(data){
+            $("main").html(data);
+            LoadCatalogMovies(id);
+        });
     },
 
     movieDetails: function (id) {
         document.documentElement.scrollIntoView(true);
-        $("main").html(viewMovieDetails());
-        LoadDetailsMovie(id);
+        $.get('/src/views/view-movie-details.html', function(data){
+            $("main").html(data);
+            LoadDetailsMovie(id);
+        });
     },
 
     login: function () {
@@ -72,8 +70,10 @@ export var Router = {
             Router.dispatch("/profile/");
             return;
         }
-        $("main").html(viewLogin());
-        Login();
+        $.get('/src/views/view-login.html', function(data){
+            $("main").html(data);
+            Login();
+        });
     },
 
     register: function () {
@@ -83,8 +83,10 @@ export var Router = {
             Router.dispatch("/profile/");
             return;
         }
-        $("main").html(viewRegister());
-        Register();
+        $.get('/src/views/view-register.html', function(data){
+            $("main").html(data);
+            Register();
+        });
     },
 
     favorites: function () {
@@ -94,8 +96,10 @@ export var Router = {
             Router.dispatch("/login/");
             return;
         }
-        $("main").html(viewFavorites());
-        LoadFavoritesMovies();
+        $.get('/src/views/view-favorites.html', function(data){
+            $("main").html(data);
+            LoadFavoritesMovies();
+        });
     },
 
     profile: function () {
@@ -105,8 +109,9 @@ export var Router = {
             Router.dispatch("/login/");
             return;
         }
-        $("main").html(viewProfile());
-        LoadProfileInfo();
+        $.get('/src/views/view-profile.html', function(data){
+            $("main").html(data);
+            LoadProfileInfo();
+        });
     }
-
 }

@@ -44,4 +44,3 @@ async function CheckAuthorizationUser() {
         $(".nav-item-not-auth").removeClass("d-none");
     }
 }
-

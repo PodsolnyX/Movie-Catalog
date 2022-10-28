@@ -76,7 +76,7 @@ function PutRequestProfile(userData) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem("JWT")
+            'Authorization': `Bearer ${localStorage.getItem("JWT")}`
         },
         body: JSON.stringify(userData)
     })

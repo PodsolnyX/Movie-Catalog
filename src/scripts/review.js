@@ -28,7 +28,7 @@ export function AddNewReview(movieId) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem("JWT")
+            'Authorization': `Bearer ${localStorage.getItem("JWT")}`
         },
         body: JSON.stringify(reviewData)
     })
@@ -49,7 +49,7 @@ export function DeleteReview(movieId, reviewId) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem("JWT")
+            'Authorization': `Bearer ${localStorage.getItem("JWT")}`
         }
     })
         .then(response => {
@@ -80,7 +80,7 @@ export function EditReview(movieId, reviewId) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem("JWT")
+            'Authorization': `Bearer ${localStorage.getItem("JWT")}`
         },
         body: JSON.stringify(reviewData)
     })

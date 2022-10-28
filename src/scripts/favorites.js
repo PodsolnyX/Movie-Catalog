@@ -49,7 +49,7 @@ export function AddMovieToFavorites(id) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem("JWT")
+            'Authorization': `Bearer ${localStorage.getItem("JWT")}`
         }
     })
         .then(response => location.reload())
@@ -64,7 +64,7 @@ export function IsMovieFavorites(id) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem("JWT")
+            'Authorization': `Bearer ${localStorage.getItem("JWT")}`
         }
     })
         .then(response => response.json())
@@ -87,7 +87,7 @@ export function DeleteMovieFromFavorites(id) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem("JWT")
+            'Authorization': `Bearer ${localStorage.getItem("JWT")}`
         }
     })
         .then(response => location.reload())

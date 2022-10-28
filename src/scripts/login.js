@@ -1,7 +1,10 @@
 import { api } from "../api.js";
 
 export function Login() {
-    document.getElementById("btn-login").addEventListener("click", function () {
+    $("#btn-register").click(function () {
+        location.pathname = "/register/";
+    });
+    $("#btn-login").click(function () {
 
         const login = $("#inputLogin").val(),
             password = $("#inputPassword").val();
