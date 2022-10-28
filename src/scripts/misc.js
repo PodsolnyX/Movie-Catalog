@@ -33,3 +33,19 @@ export function СalculateMediumRating(movie) {
 
     return rating
 }
+
+export function GetColorByRating(value){
+    if (value < 5) {
+        return "#dc3545";
+    }
+    else if (value < 7) {
+        return "#777777";
+    }
+    else {
+        return "#3bb33b";
+    }
+    // value = (value/10);
+    // console.log(value)
+    // var hue=((value)*120).toString(10);
+    // return ["hsl(",hue,",100%,50%)"].join("");
+}

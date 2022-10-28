@@ -66,6 +66,7 @@ async function CreateMovieCard(movie, movieId) {
 }
 
 function CreateReviewCard(review, movieId, isUser = false) {
+    $("#reviews-empty").addClass("d-none");
     let template = $("#sample-card-review");
     let blockReview = template.clone();
 
@@ -77,11 +78,11 @@ function CreateReviewCard(review, movieId, isUser = false) {
     blockReview.find(".review-rating").text(review.rating);
     if (review.rating > 5) {
         blockReview.find(".review-rating").addClass("bg-success");
-        blockReview.addClass("border-success");
+        // blockReview.addClass("border-success");
     }
     else {
         blockReview.find(".review-rating").addClass("bg-danger")
-        blockReview.addClass("border-danger");
+        // blockReview.addClass("border-danger");
     }
 
     blockReview.find(".review-date").text(CalculateDateReview(review.createDateTime));

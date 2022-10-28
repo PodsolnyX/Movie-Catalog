@@ -1,5 +1,29 @@
 body {
-    background-color: rgb(245, 244, 244);
+    background-color: #151517;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #151517;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #929292;
+}
+
+.card {
+    background-color: #212529;
+    
+}
+
+.card-header {
+    background-color: #1d2023;
+}
+.card-footer {
+    background-color: #1d2023;
+}
+
+.film-rating {
+    color: #090909;
 }
 
 .film-poster-catalog {
@@ -27,4 +51,33 @@ body {
 
 .scale:hover {
     transform: scale(1.05);
+}
+
+.pagination > li > a
+{
+    background-color: #212529;
+    color: #a7a7a7;
+    border-color: #212529;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #bdbdbd;
+    background-color: #212529;
+    border: solid 1px #4c535b !Important;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #212529 !Important;
+    border: solid 1px #212529 !Important;
+}
+
+.pagination > .active > a:hover
+{
+    border: solid 1px #4c535b !Important;
 }
