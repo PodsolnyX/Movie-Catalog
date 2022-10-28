@@ -23,6 +23,7 @@ async function CreateMovieCard(movie, movieId) {
     let block = $("#movie-details-container");
     block.find(".film-poster").attr("src", movie.poster);
     block.find(".film-name").text(`${movie.name} (${movie.year})`);
+    block.find(".film-description").text(movie.description);
     block.find(".film-year").text(movie.year);
     block.find(".film-country").text(movie.country);
     block.find(".film-genre").text(CalculateGenresString(movie));

@@ -1,14 +1,30 @@
 body {
-    background-color:rgb(245, 244, 244);
+    background-color: rgb(245, 244, 244);
 }
+
 .film-poster-catalog {
     height: 100px;
     width: auto;
 }
-.header-review{
+
+.header-review {
     height: 70px;
 }
-.avatar-profile{
+
+.avatar-profile {
     max-height: 300px;
     width: 300px;
+}
+
+.review-avatar {
+    max-width: 50px;
+}
+
+.scale {
+    z-index: 10;
+    transition: 0.5s;
+}
+
+.scale:hover {
+    transform: scale(1.05);
 }
