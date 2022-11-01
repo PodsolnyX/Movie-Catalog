@@ -6,18 +6,20 @@ body {
     width: 8px;
     background-color: #151517;
 }
+
 ::-webkit-scrollbar-thumb {
     background-color: #929292;
 }
 
 .card {
     background-color: #212529;
-    
+
 }
 
 .card-header {
     background-color: #1d2023;
 }
+
 .card-footer {
     background-color: #1d2023;
 }
@@ -45,7 +47,6 @@ body {
 }
 
 .scale {
-    z-index: 10;
     transition: 0.5s;
 }
 
@@ -53,31 +54,32 @@ body {
     transform: scale(1.05);
 }
 
-.pagination > li > a
-{
+#sample-card-review {
+    border-color: #181a1d;
+    border-width: 2px;
+}
+
+#movies-nav-pagination>li>a {
     background-color: #212529;
     color: #a7a7a7;
     border-color: #212529;
 }
 
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover
-{
+#movies-nav-pagination>li>a:focus,
+#movies-nav-pagination>li>a:hover,
+#movies-nav-pagination>li>span:focus,
+#movies-nav-pagination>li>span:hover {
     color: #bdbdbd;
     background-color: #212529;
-    border: solid 1px #4c535b !Important;
+    border: solid 1px #4c535b;
 }
 
-.pagination > .active > a
-{
+#movies-nav-pagination>.active>a {
     color: white;
-    background-color: #212529 !Important;
-    border: solid 1px #212529 !Important;
+    background-color: #212529;
+    border: solid 1px #212529;
 }
 
-.pagination > .active > a:hover
-{
+#movies-nav-pagination>.active>a:hover {
     border: solid 1px #4c535b !Important;
 }
