@@ -28,8 +28,20 @@ export function СalculateMediumRating(movie) {
 
     if (movie.reviews.length != 0) {
         rating /= movie.reviews.length;
-        rating.toFixed(1);
+        rating = rating.toFixed(1);
     }
 
     return rating
+}
+
+export function GetColorByRating(value){
+    if (value < 5) {
+        return "#dc3545";
+    }
+    else if (value < 7) {
+        return "#777777";
+    }
+    else {
+        return "#3bb33b";
+    }
 }

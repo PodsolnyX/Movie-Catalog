@@ -1,8 +1,10 @@
-import {LoadCatalogMovies, LoadDetailsMovie} from './scripts.js';
-import viewLogin from "/src/views/view-login.js";
-import viewRegister from "/src/views/view-register.js";
-import viewMoviesCatalog from "/src/views/view-movies-catalog.js";
-import viewMovieDetails from "/src/views/view-movie-details.js";
+import {LoadDetailsMovie} from './movie-details.js';
+import {LoadCatalogMovies} from './movies-catalog.js';
+import {LoadFavoritesMovies} from './favorites.js';
+import {LoadProfileInfo} from './profile.js';
+import {Login} from "./login.js";
+import {Register} from "./register.js";
+import {SetupHighlightingActivePage} from "./navbar.js";
 
 export var Router = {
 
@@ -13,6 +15,7 @@ export var Router = {
         "/login/": "login",
         "/register/": "register",
         "/favorites/": "favorites",
+        "/profile/": "profile"
     },
 
     init: function () {
@@ -31,35 +34,88 @@ export var Router = {
         history.pushState({}, "", path)
 
         var i = this._routes.length;
+        let flagFound = false;
 
         while (i--) {
             var args = path.match(this._routes[i].pattern);
             if (args) {
+                flagFound = true;
                 this._routes[i].callback.apply(this, args.slice(1))
             }
+        }
+        if (!flagFound) {
+            alert("Page not found");
         }
     },
 
     movieCatalog: function (id = 1) {
         document.documentElement.scrollIntoView(true);
-        $("main").html(viewMoviesCatalog());
-        LoadCatalogMovies(id);
+        SetupHighlightingActivePage("films");
+        $.get('/src/views/view-movies-catalog.html', function(data){
+            $("main").html(data);
+            LoadCatalogMovies(id);
+        });
     },
 
     movieDetails: function (id) {
         document.documentElement.scrollIntoView(true);
-        $("main").html(viewMovieDetails());
-        LoadDetailsMovie(id);
+        $.get('/src/views/view-movie-details.html', function(data){
+            $("main").html(data);
+            LoadDetailsMovie(id);
+        });
     },
 
     login: function () {
         document.documentElement.scrollIntoView(true);
-        $("main").html(viewLogin());
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user.auth == true) {
+            Router.dispatch("/profile/");
+            return;
+        }
+        $.get('/src/views/view-login.html', function(data){
+            $("main").html(data);
+            Login();
+        });
     },
 
     register: function () {
         document.documentElement.scrollIntoView(true);
-        $("main").html(viewRegister());
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user.auth == true) {
+            Router.dispatch("/profile/");
+            return;
+        }
+        $.get('/src/views/view-register.html', function(data){
+            $("main").html(data);
+            Register();
+        });
     },
 
+    favorites: function () {
+        document.documentElement.scrollIntoView(true);
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user.auth == false) {
+            Router.dispatch("/login/");
+            return;
+        }
+        SetupHighlightingActivePage("favorites");
+        $.get('/src/views/view-favorites.html', function(data){
+            $("main").html(data);
+            LoadFavoritesMovies();
+        });
+    },
+
+    profile: function () {
+        document.documentElement.scrollIntoView(true);
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user.auth == false) {
+            Router.dispatch("/login/");
+            return;
+        }
+        SetupHighlightingActivePage("profile");
+        $.get('/src/views/view-profile.html', function(data){
+            $("main").html(data);
+            LoadProfileInfo();
+        });
+    }
 }

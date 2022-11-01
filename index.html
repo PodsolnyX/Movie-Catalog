@@ -5,9 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/src/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="/src/scripts/router.js" type="module"></script>
+    <script src="/src/scripts/main.js" type="module"></script>
     <title>Movies Catalog</title>
 </head>
 
@@ -22,29 +28,29 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Фильмы</a>
+                        <a class="nav-link" aria-current="page" href="/" id="navFilms">Фильмы</a>
                     </li>
-                    <li class="nav-item d-none">
-                        <a class="nav-link" href="#">Избранное</a>
+                    <li class="nav-item d-none nav-item-auth">
+                        <a class="nav-link" href="/favorites/" id="navFavorites">Избранное</a>
                     </li>
-                    <li class="nav-item d-none">
-                        <a class="nav-link" href="#">Мой профиль</a>
+                    <li class="nav-item d-none nav-item-auth">
+                        <a class="nav-link" href="/profile/" id="navProfile">Мой профиль</a>
                     </li>
                 </ul>
-                <div class="">
-                    <a class="text-decoration-none text-white pe-3" href="/login/">Вход</a>
-                    <a class="text-decoration-none text-white" href="/register/">Регистрация</a>
+                <div>
+                    <a class="text-decoration-none d-none text-white pe-3 nav-item-auth" id="nameUser"
+                        href="/profile/"></a>
+                    <a class="text-decoration-none d-none text-white pe-3 nav-item-auth" id="btnLogout"
+                        href="/">Выход</a>
+                    <a class="text-decoration-none text-white pe-3 nav-item-not-auth" href="/login/">Вход</a>
+                    <a class="text-decoration-none text-white nav-item-not-auth" href="/register/">Регистрация</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="pt-4 pb-4" ></main>
-    
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="/src/scripts/router.js" type="module"></script>  
-    <script src="/src/scripts/scripts.js" type="module"></script>    
+    <main class="pt-4 pb-4"></main>
+
 </body>
 
 </html>
