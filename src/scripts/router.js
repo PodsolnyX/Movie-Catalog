@@ -4,6 +4,7 @@ import {LoadFavoritesMovies} from './favorites.js';
 import {LoadProfileInfo} from './profile.js';
 import {Login} from "./login.js";
 import {Register} from "./register.js";
+import {SetupHighlightingActivePage} from "./main.js";
 
 export var Router = {
 
@@ -49,6 +50,7 @@ export var Router = {
 
     movieCatalog: function (id = 1) {
         document.documentElement.scrollIntoView(true);
+        SetupHighlightingActivePage("films");
         $.get('/src/views/view-movies-catalog.html', function(data){
             $("main").html(data);
             LoadCatalogMovies(id);
@@ -96,6 +98,7 @@ export var Router = {
             Router.dispatch("/login/");
             return;
         }
+        SetupHighlightingActivePage("favorites");
         $.get('/src/views/view-favorites.html', function(data){
             $("main").html(data);
             LoadFavoritesMovies();
@@ -109,6 +112,7 @@ export var Router = {
             Router.dispatch("/login/");
             return;
         }
+        SetupHighlightingActivePage("profile");
         $.get('/src/views/view-profile.html', function(data){
             $("main").html(data);
             LoadProfileInfo();

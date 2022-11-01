@@ -3,16 +3,19 @@ import { Authorization } from "./authorization.js";
 import { Logout } from "./logout.js";
 
 window.addEventListener("load", async () => {
-    CheckAuthorizationUser();
-    RegisterClickReferenceEvents();
-    Router.dispatch(window.location.pathname);
+    SetupPage();
 })
 
 window.addEventListener("popstate", async () => {
-    CheckAuthorizationUser();
+    SetupPage();
+})
+
+async function SetupPage() {
+    await Authorization();
+    SetupNavbar();
     RegisterClickReferenceEvents();
     Router.dispatch(window.location.pathname);
-})
+}
 
 function RegisterClickReferenceEvents() {
     Router.init();
@@ -28,9 +31,7 @@ function RegisterClickReferenceEvents() {
     for (let anchor of anchors) anchor.onclick = handler;
 }
 
-async function CheckAuthorizationUser() {
-    await Authorization();
-
+function SetupNavbar() {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (user.auth == true) {
@@ -42,5 +43,28 @@ async function CheckAuthorizationUser() {
     else {
         $(".nav-item-auth").addClass("d-none");
         $(".nav-item-not-auth").removeClass("d-none");
+    }
+}
+
+export function SetupHighlightingActivePage(key) {
+    if (key == "films") {
+        $("#navFilms").addClass("active");
+        $("#navFavorites").removeClass("active");
+        $("#navProfile").removeClass("active");
+    }
+    else if (key == "favorites") {
+        $("#navFilms").removeClass("active");
+        $("#navFavorites").addClass("active");
+        $("#navProfile").removeClass("active");
+    }
+    else if (key == "profile") {
+        $("#navFilms").removeClass("active");
+        $("#navFavorites").removeClass("active");
+        $("#navProfile").addClass("active");
+    }
+    else {
+        $("#navFilms").removeClass("active");
+        $("#navFavorites").removeClass("active");
+        $("#navProfile").removeClass("active");
     }
 }
