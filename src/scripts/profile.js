@@ -30,42 +30,17 @@ function EditProfile() {
 }
 
 function SaveProfile(user) {
-    const email = String($("#inputEmail").val()),
-        avatarLink = $("#inputAvatar").val() == "" ? null : $("#inputAvatar").val(),
-        name = $("#inputName").val(),
-        birthDate = $("#inputBirthdate").val(),
-        gender = $("#inputGender").val();
-
-    if (email == "") {
-        alert("Введите адрес почты");
-        return;
-    }
-    else if (birthDate == "") {
-        alert("Выберете дату рождения");
-        return;
-    }
-    else if (name == "") {
-        alert("Введите ФИО");
-        return;
-    }
-    else if (!email.match(/^\S+@\S+\.\S+$/)) {
-        alert("Email неккоректен");
-        return;
-    }
-    else if (Date.parse(birthDate) > Date.now()) {
-        alert("Дата рождения неккоректна");
-        return;
-    }
-
     const newUserData = {
         id: user.id,
         nickName: user.nickName,
-        email: email,
-        avatarLink: avatarLink,
-        name: name,
-        birthDate: (`${birthDate}T00:00:00.000Z`),
-        gender: gender == 1 ? 1 : 0
+        email: String($("#inputEmail").val()),
+        avatarLink: $("#inputAvatar").val() == "" ? null : $("#inputAvatar").val(),
+        name: $("#inputName").val(),
+        birthDate: (`${$("#inputBirthdate").val()}T00:00:00.000Z`),
+        gender: $("#inputGender").val() == 1 ? 1 : 0
     }
+
+    if (!CheckValidationData(newUserData)) return;
 
     PutRequestProfile(newUserData);
 }
@@ -89,4 +64,31 @@ function PutRequestProfile(userData) {
         .catch(err => {
             alert("Ошибка");
         });
+}
+
+function CheckValidationData(userData) {
+    if (userData.email == "") {
+        alert("Введите адрес почты");
+        return false;
+    }
+    else if (!userData.email.match(/^\S+@\S+\.\S+$/)) {
+        alert("Email неккоректен");
+        return false;
+    }
+
+    else if (userData.birthDate == "T00:00:00.000Z") {
+        alert("Выберете дату рождения");
+        return false;
+    }
+    else if (Date.parse(userData.birthDate) > Date.now()) {
+        alert("Дата рождения неккоректна");
+        return false;
+    }
+
+    else if (userData.name == "") {
+        alert("Введите ФИО");
+        return false;
+    }
+
+    return true;
 }

@@ -4,7 +4,7 @@ import {LoadFavoritesMovies} from './favorites.js';
 import {LoadProfileInfo} from './profile.js';
 import {Login} from "./login.js";
 import {Register} from "./register.js";
-import {SetupHighlightingActivePage} from "./main.js";
+import {SetupHighlightingActivePage} from "./navbar.js";
 
 export var Router = {
 

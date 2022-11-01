@@ -44,8 +44,4 @@ export function GetColorByRating(value){
     else {
         return "#3bb33b";
     }
-    // value = (value/10);
-    // console.log(value)
-    // var hue=((value)*120).toString(10);
-    // return ["hsl(",hue,",100%,50%)"].join("");
 }
