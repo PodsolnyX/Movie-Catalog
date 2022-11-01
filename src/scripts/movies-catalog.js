@@ -1,4 +1,4 @@
-import { CalculateGenresString, СalculateMediumRating } from "./misc.js";
+import { CalculateGenresString, СalculateMediumRating, GetColorByRating} from "./misc.js";
 import { api } from "../api.js";
 import { Router } from "./router.js";
 
@@ -37,7 +37,9 @@ function CreateMovieCard(movie) {
     block.find(".film-year").text(movie.year);
     block.find(".film-country").text(movie.country);
     block.find(".film-genre").text(`•${CalculateGenresString(movie)}`);
-    block.find(".film-rating").text(`Средняя оценка - ${СalculateMediumRating(movie)}`);
+    let rating = СalculateMediumRating(movie);
+    block.find(".film-rating").css({"backgroundColor": GetColorByRating(rating)});
+    block.find(".film-rating").text(`Средняя оценка - ${rating}`);
     block.removeClass("d-none");
     $("#movies-catalog-container").append(block);
 }

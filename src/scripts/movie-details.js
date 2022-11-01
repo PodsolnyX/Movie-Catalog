@@ -66,6 +66,7 @@ async function CreateMovieCard(movie, movieId) {
 }
 
 function CreateReviewCard(review, movieId, isUser = false) {
+    $("#reviews-empty").addClass("d-none");
     let template = $("#sample-card-review");
     let blockReview = template.clone();
 

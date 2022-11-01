@@ -1,4 +1,4 @@
-import { CalculateGenresString, СalculateMediumRating } from "./misc.js";
+import { CalculateGenresString, СalculateMediumRating, GetColorByRating } from "./misc.js";
 import { api } from "../api.js";
 
 export function LoadFavoritesMovies() {
@@ -32,12 +32,16 @@ function CreateMovieCard(movie) {
     let block = template.clone();
     block.attr("id", "movie" + movie.id);
     block.attr("data-id", movie.id);
+    block.find(".poster-container").attr("href", "/movie/" + movie.id);
+    block.find(".info-container").attr("href", "/movie/" + movie.id);
     block.find(".film-poster-catalog").attr("src", movie.poster);
     block.find(".film-name").text(movie.name);
     block.find(".film-year").text(movie.year);
     block.find(".film-country").text(movie.country);
     block.find(".film-genre").text(`•${CalculateGenresString(movie)}`);
-    block.find(".film-rating").text(`Средняя оценка - ${СalculateMediumRating(movie)}`);
+    let rating = СalculateMediumRating(movie);
+    block.find(".film-rating").css({"backgroundColor": GetColorByRating(rating)});
+    block.find(".film-rating").text(`Средняя оценка - ${rating}`);
     block.find(".btn-delete-favorites").click(function () { DeleteMovieFromFavorites(movie.id) })
     block.removeClass("d-none");
     $("#movies-favorites-container").append(block);
